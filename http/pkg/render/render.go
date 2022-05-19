@@ -7,29 +7,41 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"github.com/Nguyenthaiduc/go-web/pkg/config"
 )
-
+var app *config.AppConfig
 var functions = template.FuncMap{}
+
+func NewTemplate(a *config.AppConfig) {
+	app = a
+}
 
 //RenderTemplate render template using html/template
 func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	tc, err := CreateTemplateCache()
-	if err != nil {
-		log.Fatal(err)
-	}
 
+	var tc map[string]*template.Template
+
+	if app.UseCache {
+
+		tc = app.TemplateCache
+	}else {
+		tc,_ = CreateTemplateCache()
+		
+	}
+	
+	// tc, err := CreateTemplateCache()
+	
 	t, ok := tc[tmpl]
 	if !ok {
-		log.Fatal(err)
-	}
+		log.Fatal("Could not get template from template cache")	}
 
 	buf := new(bytes.Buffer)
 
-	_ = t.Execute(buf,nil)
+	_ = t.Execute(buf, nil)
 
-	_, err = buf.WriteTo(w)
+	_, err := buf.WriteTo(w)
 	if err != nil {
-		fmt.Println("Error writing template to brower",err)
+		fmt.Println("Error writing template to brower", err)
 	}
 
 }
