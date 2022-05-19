@@ -7,8 +7,12 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
 	"github.com/Nguyenthaiduc/go-web/pkg/config"
+	"github.com/Nguyenthaiduc/go-web/pkg/models"
+	
 )
+
 var app *config.AppConfig
 var functions = template.FuncMap{}
 
@@ -17,27 +21,28 @@ func NewTemplate(a *config.AppConfig) {
 }
 
 //RenderTemplate render template using html/template
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
+func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 
 	var tc map[string]*template.Template
 
 	if app.UseCache {
 
 		tc = app.TemplateCache
-	}else {
-		tc,_ = CreateTemplateCache()
-		
+	} else {
+		tc, _ = CreateTemplateCache()
+
 	}
-	
+
 	// tc, err := CreateTemplateCache()
-	
+
 	t, ok := tc[tmpl]
 	if !ok {
-		log.Fatal("Could not get template from template cache")	}
+		log.Fatal("Could not get template from template cache")
+	}
 
 	buf := new(bytes.Buffer)
 
-	_ = t.Execute(buf, nil)
+	_ = t.Execute(buf, td)
 
 	_, err := buf.WriteTo(w)
 	if err != nil {
