@@ -1,3 +1,0 @@
-# Secure Cookie
-
-<p>Một cookie an toàn luôn có thuộc tính an toàn được kích hoạt, vì vậy nó được sử dụng chủ yếu thông qua HTTPS và truyền một cách an toàn với các kết nối được mã hóa. Các HttpOnly cờ trong này để thỏa mãn tiêu đề Cookie an toàn rằng JavaScript hoặc bất kỳ phi HTTP phương pháp không thể truy cập các tập tin cookie. Cookie hoạt động thông qua sự hỗ trợ của hai tiêu đề: thiết cookie và cookie. Công việc của tiêu đề set-Cookie là để tạo ra một cookie được bảo đảm trên hệ thống của người sử dụng để đáp ứng với yêu cầu http. Trong khi header Cookie là một phần của ứng dụng với một http request gửi đến máy chủ để xác nhận nếu có một cookie an toàn khớp với tên miền và đường dẫn yêu cầu</p>
