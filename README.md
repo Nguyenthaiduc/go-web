@@ -11,6 +11,6 @@ $ go get github.com/justinas/nosurf
 $ go get github.com/alexedwards/scs/v2
 ```
 # Cookie
-- Samsite [Samsite](https://github.com/Nguyenthaiduc/go-web/Samsite.md)
-- Persist [Persist](https://github.com/Nguyenthaiduc/go-web/Persist.md)
-- Secure  [Secure](https://github.com/Nguyenthaiduc/go-web/Secure.md)
+- Samsite [Samsite](https://github.com/Nguyenthaiduc/go-web/blob/main/Samesite.md)
+- Persist [Persist](https://github.com/Nguyenthaiduc/go-web/blob/main/Persist.md)
+- Secure  [Secure](https://github.com/Nguyenthaiduc/go-web/blob/main/Secure.md)
